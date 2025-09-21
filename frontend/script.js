@@ -1,4 +1,4 @@
-const API_URL = 'http://localhost:5000/usuarios';
+const API_URL = '/api/usuarios';
 
 // Elementos del DOM
 const usuarioForm = document.getElementById('usuario-form');
