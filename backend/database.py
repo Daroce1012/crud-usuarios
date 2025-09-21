@@ -1,0 +1,20 @@
+import sqlite3
+
+def crear_tabla():
+    conn = sqlite3.connect('usuarios.db')
+    cursor = conn.cursor()
+    
+    cursor.execute('''
+    CREATE TABLE IF NOT EXISTS usuarios (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        nombre TEXT NOT NULL,
+        email TEXT NOT NULL UNIQUE,
+        edad INTEGER
+    )
+    ''')
+    
+    conn.commit()
+    conn.close()
+
+def obtener_conexion():
+    return sqlite3.connect('usuarios.db')

@@ -1,0 +1,26 @@
+---
+- name: Configurar infraestructura completa CRUD
+  hosts: all
+  tasks:
+    - name: Actualizar cache de apt
+      apt:
+        update_cache: yes
+      become: yes
+
+- name: Configurar Load Balancer
+  hosts: load_balancers
+  roles:
+    - role: load_balancer
+  become: yes
+
+- name: Configurar Frontends
+  hosts: frontends
+  roles:
+    - role: frontend
+  become: yes
+
+- name: Configurar Backend
+  hosts: backends
+  roles:
+    - role: backend
+  become: yes
